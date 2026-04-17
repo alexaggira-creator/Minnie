@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Celeste Cumple 5!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Overlay de Inicio -->
+    <div id="intro-overlay" class="overlay">
+        <div class="overlay-content">
+            <div class="envelope-wrapper">
+                <div class="envelope"></div>
+            </div>
+            <button id="start-btn" class="magical-btn">Abrir Invitación</button>
+        </div>
+    </div>
+
+    <!-- Video Intro -->
+    <div id="video-container" class="hidden">
+        <video id="intro-video" playsinline>
+            <source src="WhatsApp Video 2026-04-16 at 8.59.45 PM.mp4" type="video/mp4">
+        </video>
+        <button id="skip-video" class="skip-btn">Saltar Video</button>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content" class="hidden">
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="minnie-ears">
+                <div class="bow"></div>
+            </div>
+            <h1 class="animate-pop">Celeste</h1>
+            <h2 class="animate-fade-in">¡Mis 5 Añitos!</h2>
+            <div class="sparkles"></div>
+        </section>
+
+        <section class="details card">
+            <div class="info-block">
+                <div class="icon">📅</div>
+                <p>Sábado, 25 de Abril de 2026</p>
+                <span>Desde las 4:00 PM</span>
+            </div>
+            <div class="info-block">
+                <div class="icon">📍</div>
+                <p>Salón de Eventos "El Castillo"</p>
+                <span>Av. de las Estrellas #456</span>
+                <a href="https://maps.apple.com/" class="map-link">Ver en Google Maps</a>
+            </div>
+        </section>
+
+        <section class="gallery card">
+            <h3>Momentos Mágicos</h3>
+            <div class="gallery-grid">
+                <img src="6c485633ee5521077461ad437f61ea36.jpg" alt="Celeste" class="gallery-img">
+                <img src="9391847c3122e1f195f188ac0f2cde14.jpg" alt="Celeste" class="gallery-img">
+                <img src="5418332786b1cda3f2b99ee97fbbb045.jpg" alt="Celeste" class="gallery-img">
+            </div>
+        </section>
+
+        <section class="extra-info card">
+            <div class="info-row">
+                <div class="info-item">
+                    <div class="icon">👗</div>
+                    <h4>Dress Code</h4>
+                    <p>Formal / Elegante</p>
+                </div>
+                <div class="info-item">
+                    <div class="icon">🎁</div>
+                    <h4>Lluvia de Sobres</h4>
+                    <p>Tu presencia es mi mayor regalo</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="countdown">
+            <h3>Falta muy poco...</h3>
+            <div id="timer">
+                <div class="time-part"><span id="days">00</span><label>Días</label></div>
+                <div class="time-part"><span id="hours">00</span><label>Horas</label></div>
+                <div class="time-part"><span id="minutes">00</span><label>Min</label></div>
+                <div class="time-part"><span id="seconds">00</span><label>Seg</label></div>
+            </div>
+        </section>
+
+        <section class="rsvp">
+            <p>¿Nos acompañas?</p>
+            <a href="https://wa.me/?text=Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Celeste"
+                class="rsvp-btn">Confirmar Asistencia</a>
+        </section>
+
+        <footer>
+            <p>¡Te esperamos con mucha alegría!</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
