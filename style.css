@@ -118,22 +118,28 @@ body {
 /* Video Background */
 #video-bg {
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: 100dvh; /* Dynamic viewport height for mobile */
     z-index: -1;
     overflow: hidden;
+    background: black; /* Fallback */
 }
 
 #video-bg video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .video-overlay {
     position: absolute;
     inset: 0;
-    background: rgba(255, 228, 233, 0.4); /* Capa rosada semi-transparente */
-    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.2); /* Sutil capa oscura para legibilidad */
+    backdrop-filter: blur(0px); /* Menos desenfoque para que el video se vea claro */
     z-index: 1;
 }
 
