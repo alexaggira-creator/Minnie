@@ -115,31 +115,47 @@ body {
     box-shadow: 0 6px 20px rgba(255, 133, 162, 0.6);
 }
 
-/* Video Container */
-#video-container {
+/* Video Background */
+#video-bg {
     position: fixed;
     inset: 0;
-    background: black;
-    z-index: 900;
+    z-index: -1;
+    overflow: hidden;
 }
 
-video {
+#video-bg video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.skip-btn {
+.video-overlay {
     position: absolute;
-    bottom: 30px;
-    right: 30px;
-    padding: 10px 20px;
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid white;
-    border-radius: 20px;
-    backdrop-filter: blur(5px);
-    cursor: pointer;
+    inset: 0;
+    background: rgba(255, 228, 233, 0.4); /* Capa rosada semi-transparente */
+    backdrop-filter: blur(2px);
+    z-index: 1;
+}
+
+.content-over-video {
+    background: transparent !important;
+    position: relative;
+    z-index: 10;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.85); /* Mas transparente para ver el video */
+    backdrop-filter: blur(15px);
+    margin: 20px;
+    padding: 40px 20px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.hidden {
+    display: none !important;
 }
 
 /* Main Content Styles */
@@ -158,7 +174,7 @@ main {
     text-align: center;
     position: relative;
     padding: 20px;
-    background: radial-gradient(circle at center, #fff 0%, var(--soft-pink) 100%);
+    background: transparent; /* Ahora el fondo es el video */
 }
 
 .minnie-ears {

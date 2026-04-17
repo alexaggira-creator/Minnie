@@ -1,40 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
     const introOverlay = document.getElementById('intro-overlay');
-    const videoContainer = document.getElementById('video-container');
+    const videoBg = document.getElementById('video-bg');
     const introVideo = document.getElementById('intro-video');
-    const skipBtn = document.getElementById('skip-video');
     const mainContent = document.getElementById('main-content');
     const startBtn = document.getElementById('start-btn');
     
-    // Manejar el inicio de la invitación (Click en el botón del sobre)
+    // Manejar el inicio de la invitación
     startBtn.addEventListener('click', () => {
         introOverlay.style.opacity = '0';
         setTimeout(() => {
             introOverlay.classList.add('hidden');
-            videoContainer.classList.remove('hidden');
+            videoBg.classList.remove('hidden');
+            mainContent.classList.remove('hidden');
+            
+            // Reproducir video como fondo loop con sonido tras la interacción
             introVideo.play().catch(e => {
                 console.log("Error al reproducir video:", e);
-                showMainContent(); // Fallback si falla
             });
+            window.scrollTo(0, 0);
         }, 800);
     });
-
-    // Cuando el video termina
-    introVideo.onended = () => {
-        showMainContent();
-    };
-
-    // Botón de saltar video
-    skipBtn.addEventListener('click', () => {
-        introVideo.pause();
-        showMainContent();
-    });
-
-    function showMainContent() {
-        videoContainer.classList.add('hidden');
-        mainContent.classList.remove('hidden');
-        window.scrollTo(0, 0);
-    }
 
     // Cuenta regresiva
     const targetDate = new Date('April 25, 2026 16:00:00').getTime();
@@ -49,10 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
             const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-            document.getElementById('days').innerText = days.toString().padStart(2, '0');
-            document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').innerText = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').innerText = seconds.toString().padStart(2, '0');
+            const d = document.getElementById('days');
+            const h = document.getElementById('hours');
+            const m = document.getElementById('minutes');
+            const s = document.getElementById('seconds');
+            
+            if (d) d.innerText = days.toString().padStart(2, '0');
+            if (h) h.innerText = hours.toString().padStart(2, '0');
+            if (m) m.innerText = minutes.toString().padStart(2, '0');
+            if (s) s.innerText = seconds.toString().padStart(2, '0');
         } else {
             const timerEl = document.getElementById('timer');
             if (timerEl) timerEl.innerHTML = "<h3>¡Es hoy!</h3>";
