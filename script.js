@@ -1,25 +1,91 @@
 document.addEventListener('DOMContentLoaded', () => {
     const introOverlay = document.getElementById('intro-overlay');
-    const videoBg = document.getElementById('video-bg');
     const introVideo = document.getElementById('intro-video');
     const mainContent = document.getElementById('main-content');
     const startBtn = document.getElementById('start-btn');
     
+    // Función para animaciones al hacer scroll (Mejorada para confiabilidad)
+    const initScrollReveal = () => {
+        const reveals = document.querySelectorAll('.reveal');
+        
+        if (!('IntersectionObserver' in window)) {
+            reveals.forEach(r => r.classList.add('active'));
+            return;
+        }
+
+        const observerOptions = {
+            threshold: 0.05, // Más sensible para móviles
+            rootMargin: "0px 0px -20px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        reveals.forEach(reveal => {
+            revealObserver.observe(reveal);
+        });
+
+        // Fail-safe: Si después de 3 segundos algo sigue oculto, mostrarlo
+        setTimeout(() => {
+            reveals.forEach(r => r.classList.add('active'));
+        }, 3000);
+    };
+
+    // Música
+    const musicPlayer = document.getElementById('music-player');
+    const musicBtn = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+
     // Manejar el inicio de la invitación
     startBtn.addEventListener('click', () => {
+        const preIntroVideo = document.getElementById('pre-intro-video');
+        
         introOverlay.style.opacity = '0';
+        introOverlay.style.pointerEvents = 'none';
         setTimeout(() => {
+            if (preIntroVideo) preIntroVideo.pause();
             introOverlay.classList.add('hidden');
-            videoBg.classList.remove('hidden');
             mainContent.classList.remove('hidden');
             
-            // Reproducir video como fondo loop con sonido tras la interacción
-            introVideo.play().catch(e => {
-                console.log("Error al reproducir video:", e);
-            });
+            // Mostrar reproductor y empezar música
+            if (musicPlayer) musicPlayer.classList.remove('hidden');
+            if (bgMusic) {
+                bgMusic.play().catch(e => console.log("Music error:", e));
+                musicBtn.classList.add('playing');
+            }
+
+            // Reproducir video inmersivo del inicio
+            if (introVideo) {
+                introVideo.currentTime = 0;
+                introVideo.play().catch(e => console.log("Bg error:", e));
+            }
+            
+            // Activar animaciones con un leve delay para asegurar renderizado
+            setTimeout(initScrollReveal, 100);
             window.scrollTo(0, 0);
         }, 800);
     });
+
+    // Toggle de música
+    if (musicBtn) {
+        musicBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play();
+                musicBtn.classList.add('playing');
+                musicBtn.classList.remove('muted');
+            } else {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.classList.add('muted');
+            }
+        });
+    }
 
     // Cuenta regresiva
     const targetDate = new Date('April 25, 2026 16:00:00').getTime();

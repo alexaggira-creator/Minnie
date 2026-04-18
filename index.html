@@ -14,37 +14,37 @@
 
 <body>
 
+    <div class="sparkle-overlay"></div>
+    
     <!-- Overlay de Inicio -->
     <div id="intro-overlay" class="overlay">
+        <video id="pre-intro-video" playsinline loop muted autoplay class="intro-bg-video">
+            <source src="WhatsApp Video 2026-04-17 at 8.11.49 PM.mp4" type="video/mp4">
+        </video>
         <div class="overlay-content">
-            <div class="envelope-wrapper">
-                <div class="envelope"></div>
-            </div>
-            <button id="start-btn" class="magical-btn">Abrir Invitación</button>
+            <button id="start-btn" class="magical-btn">Ver Invitación</button>
         </div>
     </div>
 
-    <!-- Fondo de Video -->
-    <div id="video-bg" class="hidden">
-        <video id="intro-video" playsinline loop>
-            <source src="WhatsApp Video 2026-04-16 at 8.59.45 PM.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-    </div>
+    <!-- El video de fondo fijo se ha eliminado para que solo sea inmersivo al inicio -->
+
 
     <!-- Main Content -->
     <main id="main-content" class="hidden content-over-video">
         <section class="hero">
-            <div class="hero-bg"></div>
-            <div class="minnie-ears">
-                <div class="bow"></div>
+            <div id="video-hero-bg" class="video-container">
+                <video id="intro-video" playsinline loop>
+                    <source src="WhatsApp Video 2026-04-17 at 8.07.45 PM.mp4" type="video/mp4">
+                </video>
+                <div class="video-hero-overlay"></div>
             </div>
+            <div class="hero-bg"></div>
             <h1 class="animate-pop">Celeste</h1>
             <h2 class="animate-fade-in">¡Mis 5 Añitos!</h2>
             <div class="sparkles"></div>
         </section>
 
-        <section class="details card">
+        <section class="details card reveal">
             <div class="info-block">
                 <div class="icon">📅</div>
                 <p>Sábado, 25 de Abril de 2026</p>
@@ -58,7 +58,7 @@
             </div>
         </section>
 
-        <section class="gallery card">
+        <section class="gallery card reveal">
             <h3>Momentos Mágicos</h3>
             <div class="gallery-grid">
                 <img src="6c485633ee5521077461ad437f61ea36.jpg" alt="Celeste" class="gallery-img">
@@ -67,7 +67,7 @@
             </div>
         </section>
 
-        <section class="extra-info card">
+        <section class="extra-info card reveal">
             <div class="info-row">
                 <div class="info-item">
                     <div class="icon">👗</div>
@@ -82,7 +82,7 @@
             </div>
         </section>
 
-        <section class="countdown">
+        <section class="countdown reveal">
             <h3>Falta muy poco...</h3>
             <div id="timer">
                 <div class="time-part"><span id="days">00</span><label>Días</label></div>
@@ -92,7 +92,7 @@
             </div>
         </section>
 
-        <section class="rsvp">
+        <section class="rsvp reveal">
             <p>¿Nos acompañas?</p>
             <a href="https://wa.me/?text=Hola!%20Confirmo%20mi%20asistencia%20al%20cumple%20de%20Celeste"
                 class="rsvp-btn">Confirmar Asistencia</a>
@@ -104,6 +104,19 @@
     </main>
 
     <script src="script.js"></script>
+    
+    <!-- Reproductor de Música -->
+    <div id="music-player" class="music-player hidden">
+        <button id="music-toggle" class="music-btn">
+            <span class="icon">🎵</span>
+            <span class="music-waves">
+                <span></span><span></span><span></span><span></span>
+            </span>
+        </button>
+        <audio id="bg-music" loop>
+            <source src="the_mountain-birthday-490600.mp3" type="audio/mpeg">
+        </audio>
+    </div>
 </body>
 
 </html>
