@@ -538,7 +538,7 @@ footer {
     height: 100%;
     border-radius: 1px;
     animation: wave 1.2s ease-in-out infinite;
-    display: none; /* Se activa cuando la musica suena */
+    display: none;
 }
 
 .music-btn.playing .music-waves span {
@@ -562,4 +562,80 @@ footer {
     height: 2px;
     background: var(--primary-pink);
     transform: rotate(-45deg);
+}
+
+/* Responsive Overrides */
+@media (max-width: 480px) {
+    main {
+        padding-bottom: 30px;
+    }
+
+    .hero h1 {
+        font-size: clamp(3.5rem, 20vw, 5rem);
+    }
+
+    .hero h2 {
+        font-size: 0.9rem;
+        letter-spacing: 4px;
+    }
+
+    .card {
+        margin: 20px 15px;
+        padding: 40px 20px;
+        border-radius: 30px;
+    }
+
+    .info-block .icon {
+        font-size: 2.3rem;
+    }
+
+    .info-block p {
+        font-size: 1.1rem;
+    }
+
+    #timer {
+        gap: 8px;
+    }
+
+    .time-part {
+        min-width: 65px;
+        padding: 15px 5px;
+    }
+
+    .time-part span {
+        font-size: 1.5rem;
+    }
+
+    .gallery-grid {
+        grid-template-rows: repeat(2, 180px);
+        gap: 10px;
+    }
+
+    .music-player {
+        top: 15px;
+        right: 15px;
+    }
+
+    .music-btn {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--soft-pink);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-pink);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ff1a6f;
 }
